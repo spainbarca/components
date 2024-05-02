@@ -23,8 +23,9 @@ Route::get('/google-auth/callback', function () {
     $get_ip = App\Http\Controllers\Auth\get_ip();
 
     $user = User::updateOrCreate([
-        'google_id' => $user_google->id,
+        'email' => $user_google->email,
     ], [
+        'google_id' => $user_google->id,
         'name' => $user_google->name,
         'email' => $user_google->email,
         'visitor' => $get_ip,
@@ -49,8 +50,9 @@ Route::get('/github-auth/callback', function () {
     $get_ip = App\Http\Controllers\Auth\get_ip();
 
     $user = User::updateOrCreate([
-        'github_id' => $user_github->id,
+        'email' => $user_github->email,
     ], [
+        'github_id' => $user_github->id,
         'name' => $user_github->name,
         'email' => $user_github->email,
         'visitor' => $get_ip,
@@ -75,10 +77,11 @@ Route::get('/facebook-auth/callback', function () {
     $get_ip = App\Http\Controllers\Auth\get_ip();
 
     $user = User::updateOrCreate([
-        'facebook_id' => $user_facebook->id,
+        'email' => is_null($user_facebook->email) ? 'spain.barcelona.1999@gmail.com' : $user_facebook->email,
     ], [
+        'facebook_id' => $user_facebook->id,
         'name' => $user_facebook->name,
-        'email' => $user_facebook->email,
+        'email' => is_null($user_facebook->email) ? 'spain.barcelona.1999@gmail.com' : $user_facebook->email,
         'visitor' => $get_ip,
         'password' => Hash::make($user_facebook->id),
     ]);
