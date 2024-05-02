@@ -48,4 +48,10 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => 'https://components.dev/facebook-auth/callback',
     ],
+
+    'linkedin-openid' => [
+        'client_id' => env('LINKEDIN_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+        'redirect' => 'https://components.dev/linkedin-auth/callback',
+    ],
 ];

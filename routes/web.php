@@ -91,6 +91,33 @@ Route::get('/facebook-auth/callback', function () {
     return redirect('dashboard');
 });
 
+Route::get('/linkedin-auth/redirect', function () {
+    return Socialite::driver('linkedin-openid')->redirect();
+});
+
+Route::get('/linkedin-auth/callback', function () {
+    $user_linkedin = Socialite::driver('linkedin-openid')->stateless()->user();
+
+    //dd($user_linkedin);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'email' => $user_linkedin->email,
+    ], [
+        'linkedin_id' => $user_linkedin->id,
+        'name' => $user_linkedin->name,
+        'email' => $user_linkedin->email,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_linkedin->id),
+    ]);
+    // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
