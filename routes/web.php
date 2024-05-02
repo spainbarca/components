@@ -43,6 +43,8 @@ Route::get('/github-auth/redirect', function () {
 Route::get('/github-auth/callback', function () {
     $user_github = Socialite::driver('github')->stateless()->user();
 
+    //dd($user_github);
+
     require "../app/Http/Controllers/Auth/GetIP.php";
     $get_ip = App\Http\Controllers\Auth\get_ip();
 
@@ -58,8 +60,32 @@ Route::get('/github-auth/callback', function () {
     Auth::login($user);
 
     return redirect('dashboard');
-    //dd($user);
+});
+
+Route::get('/facebook-auth/redirect', function () {
+    return Socialite::driver('facebook')->redirect();
+});
+
+Route::get('/facebook-auth/callback', function () {
+    $user_facebook = Socialite::driver('facebook')->stateless()->user();
+
+    //dd($user_facebook);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'facebook_id' => $user_facebook->id,
+    ], [
+        'name' => $user_facebook->name,
+        'email' => $user_facebook->email,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_facebook->id),
+    ]);
     // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
 });
 
 Route::get('/dashboard', function () {

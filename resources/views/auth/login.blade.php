@@ -46,6 +46,13 @@
             </a>
         </div>
 
+        <div class="flex items-center justify-center dark:bg-gray-800 mt-4">
+            <a href="/facebook-auth/redirect" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                <img class="w-6 h-6" src="https://www.svgrepo.com/show/475647/facebook-color.svg" loading="lazy" alt="facebook logo">
+                <span>Continue with Facebook</span>
+            </a>
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
