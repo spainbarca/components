@@ -145,6 +145,33 @@ Route::get('/twitter-auth/callback', function () {
     return redirect('dashboard');
 });
 
+Route::get('/slack-auth/redirect', function () {
+    return Socialite::driver('slack')->redirect();
+});
+
+Route::get('/slack-auth/callback', function () {
+    $user_slack = Socialite::driver('slack')->stateless()->user();
+
+    //dd($user_slack);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'email' => $user_slack->email,
+    ], [
+        'slack_id' => $user_slack->id,
+        'name' => $user_slack->name,
+        'email' => $user_slack->email,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_slack->id),
+    ]);
+    // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

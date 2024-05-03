@@ -55,15 +55,22 @@
 
         <div class="flex items-center justify-center dark:bg-gray-800 mt-4">
             <a href="/linkedin-auth/redirect" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
-                <img class="w-6 h-6" src="https://www.svgrepo.com/show/75820/linkedin.svg" loading="lazy" alt="facebook logo">
+                <img class="w-6 h-6" src="https://www.svgrepo.com/show/75820/linkedin.svg" loading="lazy" alt="linkedin logo">
                 <span>Continue with LinkedIn</span>
             </a>
         </div>
 
         <div class="flex items-center justify-center dark:bg-gray-800 mt-4">
             <a href="/twitter-auth/redirect" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
-                <img class="w-6 h-6" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" loading="lazy" alt="facebook logo">
+                <img class="w-6 h-6" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" loading="lazy" alt="x logo">
                 <span>Continue with X</span>
+            </a>
+        </div>
+
+        <div class="flex items-center justify-center dark:bg-gray-800 mt-4">
+            <a href="/slack-auth/redirect" class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                <img class="w-6 h-6" src="https://www.svgrepo.com/show/448248/slack.svg" loading="lazy" alt="slack logo">
+                <span>Continue with Slack</span>
             </a>
         </div>
 

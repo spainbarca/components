@@ -60,4 +60,10 @@ return [
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect' => 'https://components.dev/twitter-auth/callback',
     ],
+
+    'slack' => [
+        'client_id' => env('SLACK_CLIENT_ID'),
+        'client_secret' => env('SLACK_CLIENT_SECRET'),
+        'redirect' => 'https://components.dev/slack-auth/callback',
+    ],
 ];
