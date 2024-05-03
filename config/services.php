@@ -54,4 +54,10 @@ return [
         'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
         'redirect' => 'https://components.dev/linkedin-auth/callback',
     ],
+
+    'twitter-oauth-2' => [
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
+        'redirect' => 'https://components.dev/twitter-auth/callback',
+    ],
 ];

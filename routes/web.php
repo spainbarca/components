@@ -118,6 +118,33 @@ Route::get('/linkedin-auth/callback', function () {
     return redirect('dashboard');
 });
 
+Route::get('/twitter-auth/redirect', function () {
+    return Socialite::driver('twitter-oauth-2')->redirect();
+});
+
+Route::get('/twitter-auth/callback', function () {
+    $user_twitter = Socialite::driver('twitter-oauth-2')->stateless()->user();
+
+    //dd($user_twitter);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'twitter_id' => $user_twitter->id,
+    ], [
+        'twitter_id' => $user_twitter->id,
+        'name' => $user_twitter->name,
+        'email' => $user_twitter->nickname,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_twitter->id),
+    ]);
+    // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
