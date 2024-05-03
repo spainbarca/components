@@ -66,4 +66,10 @@ return [
         'client_secret' => env('SLACK_CLIENT_SECRET'),
         'redirect' => 'https://components.dev/slack-auth/callback',
     ],
+
+    'discord' => [
+        'client_id' => env('DISCORD_CLIENT_ID'),
+        'client_secret' => env('DISCORD_CLIENT_SECRET'),
+        'redirect' => 'https://components.dev/discord-auth/callback',
+    ],
 ];

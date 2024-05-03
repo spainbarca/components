@@ -172,6 +172,33 @@ Route::get('/slack-auth/callback', function () {
     return redirect('dashboard');
 });
 
+Route::get('/discord-auth/redirect', function () {
+    return Socialite::driver('discord')->redirect();
+});
+
+Route::get('/discord-auth/callback', function () {
+    $user_discord = Socialite::driver('discord')->stateless()->user();
+
+    //dd($user_discord);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'email' => $user_discord->email,
+    ], [
+        'discord_id' => $user_discord->id,
+        'name' => $user_discord->name,
+        'email' => $user_discord->email,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_discord->id),
+    ]);
+    // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
