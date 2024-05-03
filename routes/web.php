@@ -199,6 +199,33 @@ Route::get('/discord-auth/callback', function () {
     return redirect('dashboard');
 });
 
+Route::get('/microsoft-auth/redirect', function () {
+    return Socialite::driver('microsoft')->redirect();
+});
+
+Route::get('/microsoft-auth/callback', function () {
+    $user_microsoft = Socialite::driver('microsoft')->stateless()->user();
+
+    //dd($user_microsoft);
+
+    require "../app/Http/Controllers/Auth/GetIP.php";
+    $get_ip = App\Http\Controllers\Auth\get_ip();
+
+    $user = User::updateOrCreate([
+        'email' => $user_microsoft->email,
+    ], [
+        'microsoft_id' => $user_microsoft->id,
+        'name' => $user_microsoft->name,
+        'email' => $user_microsoft->email,
+        'visitor' => $get_ip,
+        'password' => Hash::make($user_microsoft->id),
+    ]);
+    // $user->token
+    Auth::login($user);
+
+    return redirect('dashboard');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

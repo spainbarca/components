@@ -72,4 +72,10 @@ return [
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
         'redirect' => 'https://components.dev/discord-auth/callback',
     ],
+
+    'microsoft' => [
+        'client_id' => env('MICROSOFT_CLIENT_ID'),
+        'client_secret' => env('MICROSOFT_CLIENT_SECRET'),
+        'redirect' => 'https://components.dev/microsoft-auth/callback',
+    ],
 ];

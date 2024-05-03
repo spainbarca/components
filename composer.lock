@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df11e14308f7f89b30242891ece42e0c",
+    "content-hash": "49d6cf6d9730123226a5526007438e1b",
     "packages": [
         {
             "name": "brick/math",
@@ -3679,6 +3679,56 @@
                 "source": "https://github.com/socialiteproviders/manager"
             },
             "time": "2024-02-17T08:58:03+00:00"
+        },
+        {
+            "name": "socialiteproviders/microsoft",
+            "version": "4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Microsoft.git",
+                "reference": "92c6f245a6175bcb51f4c7e0542b1e2891646edb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Microsoft/zipball/92c6f245a6175bcb51f4c7e0542b1e2891646edb",
+                "reference": "92c6f245a6175bcb51f4c7e0542b1e2891646edb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.0",
+                "socialiteproviders/manager": "^4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Microsoft\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
+                }
+            ],
+            "description": "Microsoft OAuth2 Provider for Laravel Socialite",
+            "keywords": [
+                "laravel",
+                "microsoft",
+                "oauth",
+                "provider",
+                "socialite"
+            ],
+            "support": {
+                "docs": "https://socialiteproviders.com/microsoft",
+                "issues": "https://github.com/socialiteproviders/providers/issues",
+                "source": "https://github.com/socialiteproviders/providers"
+            },
+            "time": "2024-02-28T14:16:00+00:00"
         },
         {
             "name": "symfony/clock",
